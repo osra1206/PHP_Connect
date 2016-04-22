@@ -1,0 +1,12 @@
+<html>
+<body>
+
+<form action="Revise.php" method="post">
+
+
+change: <input type="text" name="Set" />
+<input type="submit" />
+</form>
+
+</body>
+</html>
