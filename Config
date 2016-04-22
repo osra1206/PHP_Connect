@@ -1,0 +1,9 @@
+<?php
+ 
+global $_DB;
+$_DB['host'] = "xxxxx.com
+$_DB['password'] = "network22222";
+$_DB['database'] = "xxxaxxxa";  
+
+
+?>
