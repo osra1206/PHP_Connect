@@ -1,0 +1,25 @@
+<?php
+
+
+require_once("Connect_Class.php");
+require_once("config.php");
+
+// Create the DB()
+$db = new DB();
+
+// Connect to Server
+$con = $db->connect($_DB['host'], $_DB['username'], $_DB['password']);
+
+echo $con ; 
+// Connect Database
+$db->Connect_Database($con,$_DB['database']);
+
+
+mysql_query("UPDATE network SET State = '$_POST[Set]' ");
+
+
+echo "1 record added";
+
+$db->Close_Connect($con);
+
+?>
