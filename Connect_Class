@@ -1,0 +1,49 @@
+<?php
+
+
+class DB 
+{       
+    function DB()
+    {
+        //Constructor 
+    }
+    
+	
+	// Connect 
+    function connect($host, $user, $pwd)
+    {
+       $con = mysql_connect("$host","$user","$pwd");
+
+       if (!$con){
+          die('Could not connect: ' . mysql_error());}
+		 
+	   else{
+		return $con; }
+	}// End method
+	
+	// Connect Database
+    function Connect_Database($link,$database)
+    {
+        $sucess = mysql_select_db("$database",$link);
+		
+		if (!$sucess){
+          die('Could not connect to database: ' . mysql_error());}
+		
+		else{
+		return $sucess;}
+		
+    } // End method
+	
+	// Close
+	function Close_Connect($link)
+    {
+       $close = mysql_close($link); 
+	   if (!$close){
+          die('Could not close: ' . mysql_error());}
+			
+	   
+    } // End method
+	
+	
+   } // End Class
+?>
