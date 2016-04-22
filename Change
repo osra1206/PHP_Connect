@@ -1,0 +1,54 @@
+<?php
+
+/*
+ * Following code will update a product information
+ * A product is identified by product id (pid)
+ */
+
+// array for JSON response
+$response = array();
+
+// check for required fields
+if (isset($_POST['pid']) && isset($_POST['Name']) && isset($_POST['State']) ) {
+    
+    $pid = $_POST['pid'];
+    $name = $_POST['Name'];
+    $state = $_POST['State'];
+  
+
+    // include db connect class
+   require_once("Connect_Class.php");
+   require_once("config.php");
+    
+    // connecting to db
+    $db = new DB();
+
+// Connect to Server
+$con = $db->connect($_DB['host'], $_DB['username'], $_DB['password']);
+ 
+// Connect Database
+$db->Connect_Database($con,$_DB['database']);
+
+    // mysql update row with matched pid
+    $result = mysql_query("UPDATE network SET Name = '$name', State = '$state' WHERE pid = $pid");
+
+    // check if row inserted or not
+    if ($result) {
+        // successfully updated
+        $response["success"] = 1;
+        $response["message"] = "Product successfully updated.";
+        
+        // echoing JSON response
+        echo json_encode($response);
+    } else {
+        
+    }
+} else {
+    // required field is missing
+    $response["success"] = 0;
+    $response["message"] = "Required field(s) is missing";
+
+    // echoing JSON response
+    echo json_encode($response);
+}
+?>
