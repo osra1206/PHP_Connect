@@ -1,0 +1,24 @@
+<?php
+
+require_once("Connect_Class.php");
+require_once("config.php");
+
+// Create the DB()
+$db = new DB();
+
+// Connect to Server
+$con = $db->connect($_DB['host'], $_DB['username'], $_DB['password']);
+
+// Connect Database
+$db->Connect_Database($con,$_DB['database']);
+
+
+$result = mysql_query('SELECT * FROM `network`;') or die('MySQL query error');
+
+$row = mysql_fetch_array($result);
+echo '@',$row['State'];
+
+$db->Close_Connect($con);
+
+
+?>
